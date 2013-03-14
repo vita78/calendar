@@ -1,0 +1,61 @@
+body{
+   margin: 0; padding: 0;
+   background-color: #fff;
+   color: #000;
+   font-size: 13px;
+   font-family:Helvetica, sans-serif;
+   /*font-weight: bolder;*/
+   border-collapse:collapse;
+   border-spacing: 0;
+}
+
+/* задание таблицы, еерасположение и внутрення тень*/
+body>div{
+   display: table;
+   table-layout: fixed; 
+   position: absolute;
+   top:35%;
+   bottom: 39%; 
+   left:42%;
+   right: 42%;
+   z-index: 100;
+   box-shadow: 0 0 10px #e9e9e9;
+   -webkit-box-shadow: 0 0 10px #e9e9e9;
+   -moz-box-shadow:0 0 10px #e9e9e9;
+}
+
+/* внешняя тень*/
+body>div:after{
+    content:"";
+    position: absolute;
+    z-index: -1;
+    top:-15px;
+    bottom:-15px;
+    left: -15px;
+    right: -15px;
+    box-shadow: 2px 2px 6px #aaa;
+    -webkit-box-shadow: 2px 2px 6px #aaa;
+    -moz-box-shadow: 2px 2px 6px #aaa;
+}
+
+/*ячейки таблицы*/
+div div:nth-child(n){
+    display: table-cell;
+    border:1px solid #ccc;
+    text-align: right;
+    padding: 5px;
+}
+
+/* строки таблицы */
+div div:nth-of-type(8n+1){
+   display: table-row;  
+}
+/* удаление внешних границ */
+div div:nth-of-type(-n+8) {border-top:none}
+div div:nth-last-child(n) {border-bottom:none}
+div div:nth-of-type(n+8)  {border-right:none}
+div div:nth-of-type(8n+2) {border-left:none}
+                 
+/* выделение выбранного диапазона дат классами selected_begin и selected_end */                
+.selected_begin ~ div:nth-last-of-type(n),.selected_begin {background-color:#e8e8e8}
+.selected_end ~ div:nth-last-of-type(n) {background-color:#fff}
